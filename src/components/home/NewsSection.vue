@@ -32,6 +32,7 @@
       <!-- News Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div
+          @click="jumpToProductsPage"
           v-for="article in articles"
           :key="article.id"
           class="group cursor-pointer"
@@ -65,7 +66,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const { t, locale } = useI18n()
 const activeTab = ref('brand')
 
@@ -107,4 +110,8 @@ const articles = computed(() => {
     }
   ]
 })
+
+const jumpToProductsPage = () => {
+  router.push('/products')
+}
 </script>

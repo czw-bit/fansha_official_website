@@ -7,6 +7,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <div
+          @click="jumpToProductsPage"
           v-for="category in categories"
           :key="category.id"
           class="group cursor-pointer overflow-hidden rounded-lg bg-gray-700 transition-transform"
@@ -37,7 +38,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const { t } = useI18n()
 
 const categories = computed(() => [
@@ -57,4 +60,8 @@ const categories = computed(() => [
     image: 'https://ext.same-assets.com/3683566378/3306561882.webp'
   }
 ])
+
+const jumpToProductsPage = () => {
+  router.push('/products')
+}
 </script>
